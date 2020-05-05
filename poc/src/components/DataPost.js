@@ -6,14 +6,18 @@ class DataPost extends Component {
         super(props)
     
         this.state = {bookId:'',
-        bookName:'',
+        authName:'',
         author:'',
-        postKaro:false
+        postKaro:false,
+        posting:true
              
         }
     }
     ifPost(){
         this.setState({postKaro:true})
+    }
+    done(){
+        this.setState({posting:false})
     }
 
     changeHandler=(e)=>{
@@ -22,27 +26,29 @@ class DataPost extends Component {
     }
     submitHandler=(e)=>{
         e.preventDefault()
+        alert(`${this.state.bookId} by ${this.state.authName} has been added`)
         axios.post(`https://jsonplaceholder.typicode.com/posts`,this.state)
         .then(res=>{
             console.log(res)
-        })
+         })
         .catch(err=>{
             console.log(err)
         })
     }
     
     render() {
-        const {bookId,bookName,author}=this.state
+        const {bookId,authName,author}=this.state
         return (
             <div>
                 <button onClick={()=>this.ifPost()}>post</button>
-                {this.state.postKaro&&
-                (<form onSubmit={this.submitHandler}>
+                {(this.state.postKaro&&this.state.posting)&&
+                (<div><form onSubmit={this.submitHandler}>
                     <input type='text' name='bookId' value={bookId} onChange={this.changeHandler}></input>
-                    <input type='text' name='bookName' value={bookName} onChange={this.changeHandler} ></input>
-                    <input type='text' name='Author' value={author} onChange={this.changeHandler} ></input>
-                    <button>Submit</button>
-                </form>)}
+                    <br></br>
+                    <input type='text' name='authName' value={authName} onChange={this.changeHandler} ></input>
+                    <br></br>
+                    <button type='submit'>Add book</button>
+                </form><button onClick={()=>this.done()}>done</button></div>)}
                 
             </div>
         );

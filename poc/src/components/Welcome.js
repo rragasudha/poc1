@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Owner from './Owner';
 import Buyer from './Buyer';
 import Author from './Author';
-import ErroBoundary from './ErroBoundary';
+import ExitHome from './ExitHome'
+
 
 
 
@@ -23,6 +24,7 @@ class Welcome extends Component {
                 <Owner></Owner>
                 <Author></Author>         
                 <Buyer></Buyer>
+                
                 
             </div>
         );

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DataPost from './DataPost';
+import UpdatedComponent from './bookPlacing';
 
 class Author extends Component {
     constructor() {
@@ -14,12 +15,18 @@ class Author extends Component {
         alert(`logged in as author suucessfully`)
     }
     render() {
+        const{loggedIn,logout}=this.props
         return (
             <div>
                 <button style = {{width:100}} onClick = {() => this.authorOptions()}>Author</button>
                 <div>
                     
-                        {this.state.authorLoggedIn?(<div><DataPost></DataPost></div>):(<h3>login as author</h3>)}
+                        {((this.state.authorLoggedIn)&&(loggedIn))?
+                        (<div>
+                            <DataPost></DataPost>
+                            <button onClick={logout}>logout</button>
+                            </div>)
+                        :(<h3>login as author</h3>)}
                     
                 </div>
                 
@@ -28,4 +35,4 @@ class Author extends Component {
     }
 }
 
-export default Author;
+export default UpdatedComponent(Author);

@@ -5,23 +5,26 @@ class bookPlacing extends Component {
     constructor() {
         super()
     
-        this.state = {orderPlaced:false}
+        this.state = {orderPlaced:false, loggedIn:true}
         this.placeOrder=this.placeOrder.bind(this)
-        this.message=this.message.bind(this)     
+        this.logout=this.logout.bind(this)     
         }
     
     placeOrder(){
         this.setState({orderPlaced:true})
     }
-    message(){
-        
-        this.setState({orderPlaced:false})
+    
+    logout(){
+        this.setState({loggedIn:false})
     }
     render() {
         return (
             <OriginalComponent orderPlaced={this.state.orderPlaced}
             placeOrder={this.placeOrder}
-            message={this.message}></OriginalComponent>
+            loggedIn={this.state.loggedIn}
+            logout={this.logout}>
+            
+            </OriginalComponent>
         );
     }
 }

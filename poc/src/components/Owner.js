@@ -3,8 +3,6 @@ import DataGet from './DataGet';
 import UpdatedComponent from './bookPlacing';
 import DataPost from './DataPost'
 import Greeting from './Greeting'
-import PasswordProtect from './PasswordProtect';
-import ErroBoundary from './ErroBoundary';
 
 class Owner extends Component {
     constructor() {
@@ -27,24 +25,26 @@ class Owner extends Component {
     
 
     render() {
-        const{orderPlaced,placeOrder,message}=this.props
+        const{orderPlaced,placeOrder}=this.props
+        const{loggedIn,logout}=this.props
         return (
             <div>
                 <button style = {{width:100}} onClick = {() => this.ownerOptions()}>Owner</button>
                 <div>
                     
-                        {this.state.ownerLoggedIn?(<div><Greeting></Greeting>
-                       <ErroBoundary><PasswordProtect></PasswordProtect></ErroBoundary> 
-                        <DataGet></DataGet>
-                        <passWord></passWord>
-                        <button onClick={()=>this.order()}>place order</button>
-                        {this.state.ifOrder && 
-                        (<div><input></input>
-                        <button onClick={placeOrder}>Submit</button>
-                        {orderPlaced&&<h4>order placed</h4>}
-                        
-                        </div>)}
+                        {((this.state.ownerLoggedIn)&&(loggedIn))?
+                        (<div>
+                            <DataGet></DataGet>
+                            <button onClick={()=>this.order()}>place order</button>
+                             {this.state.ifOrder && 
+                             (<div>
+                                <input>Book Details</input>
+                                <button onClick={placeOrder}>Submit</button>
+                                {orderPlaced&&<h4>order placed</h4>}
+                             </div>)
+                        }
                         <DataPost></DataPost>
+                        <button onClick={logout}>logout</button>
                         </div>)
                         :(<h3>login as owner</h3>)}
                     
