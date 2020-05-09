@@ -40,12 +40,14 @@ class DataPost extends Component {
         const {bookId,authName,author}=this.state
         return (
             <div>
-                <button onClick={()=>this.ifPost()}>post</button>
+                <button onClick={()=>this.ifPost()}>Add a book</button>
                 {(this.state.postKaro&&this.state.posting)&&
                 (<div><form onSubmit={this.submitHandler}>
-                    <input type='text' name='bookId' value={bookId} onChange={this.changeHandler}></input>
+                    <label>Book name</label>
+                    <input  type='text' name='bookId' value={bookId} onChange={this.changeHandler}></input>
                     <br></br>
-                    <input type='text' name='authName' value={authName} onChange={this.changeHandler} ></input>
+                    <label>Author name name</label>
+                    <input  type='text' name='authName' value={authName} onChange={this.changeHandler} ></input>
                     <br></br>
                     <button type='submit'>Add book</button>
                 </form><button onClick={()=>this.done()}>done</button></div>)}
