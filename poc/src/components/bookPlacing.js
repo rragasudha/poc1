@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
+import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const UpdatedComponent = OriginalComponent =>{
 class bookPlacing extends Component {
     constructor() {
         super()
     
-        this.state = {orderPlaced:false, loggedIn:true}
+        this.state = {orderPlaced:true, loggedIn:true}
         this.placeOrder=this.placeOrder.bind(this)
         this.logout=this.logout.bind(this)     
         }
     
     placeOrder(){
-        this.setState({orderPlaced:true})
+        this.setState({orderPlaced:false})
+        toast.info('Your order has been placed!!!',{autoClose:false})
     }
     
     logout(){

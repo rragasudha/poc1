@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component,useState } from 'react';
 import DataGet from './DataGet';
 import UpdatedComponent from './bookPlacing';
 import DataPost from './DataPost'
 import Greeting from './Greeting'
+import Modal from 'react-modal'
 
 class Owner extends Component {
     constructor() {
@@ -28,12 +29,13 @@ class Owner extends Component {
         const{orderPlaced,placeOrder}=this.props
         const{loggedIn,logout}=this.props
         return (
-            <div>
+            <div style={{paddingBottom:'20px'}}>
                 <button style = {{width:100}} onClick = {() => this.ownerOptions()}>Owner</button>
                 <div>
                     
                         {((this.state.ownerLoggedIn)&&(loggedIn))?
-                        (<div>
+                        (<Modal isOpen={this.state.ownerLoggedIn} style={{overlay:{backgroundColor:'black'}}}>
+                            <div>
                             <DataGet></DataGet>
                             <button onClick={()=>this.order()}>place order</button>
                              {this.state.ifOrder && 
@@ -42,13 +44,14 @@ class Owner extends Component {
                                 <button onClick={placeOrder}>Submit</button>
                                 {orderPlaced&&<h4>order placed</h4>}
                              </div>)
+                             }
+                            <DataPost></DataPost>
+                            <button onClick={logout}>logout</button>
+                            </div>
+                        </Modal>) :(null)
                         }
-                        <DataPost></DataPost>
-                        <button onClick={logout}>logout</button>
-                        </div>)
-                        :(<h3>login as owner</h3>)}
-                    
-                </div>
+                        
+                     </div>
             </div>
             )
         

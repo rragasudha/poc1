@@ -1,6 +1,9 @@
 import React, {useState} from 'react'
-import {useFormik} from 'formik';
+import {useFormik} from 'formik'
+import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
+toast.configure()
 function Loginform() {
     const[ifSubmit,setSubmit]=useState(true)
     const formik = useFormik({
@@ -10,7 +13,7 @@ function Loginform() {
             text:''
         },
         onSubmit: values =>{
-            alert(`You have been registered successfully`)
+            toast.success('You have registered successfully!',{position: toast.POSITION.TOP_CENTER})
             setSubmit(false)
 
         },
