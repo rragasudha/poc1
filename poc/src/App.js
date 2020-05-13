@@ -5,6 +5,7 @@ import Welcome from './components/Welcome';
 //import DataGet from './components/DataGet';
 import { UserProvider } from './components/UserContext';
 import ExitHome from './components/ExitHome';
+
 //import Start from './components/Start';
 
 
@@ -18,6 +19,7 @@ function App() {
       <UserProvider value = "Ragasudha">
       <ExitHome/>
       </UserProvider>
+      
     </div>
   );
 }

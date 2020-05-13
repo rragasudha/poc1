@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
+
 const UpdatedComponent = OriginalComponent =>{
 class bookPlacing extends Component {
     constructor() {

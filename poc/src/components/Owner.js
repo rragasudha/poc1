@@ -5,6 +5,7 @@ import DataPost from './DataPost'
 import Greeting from './Greeting'
 import Modal from 'react-modal'
 
+
 class Owner extends Component {
     constructor() {
         super()
@@ -52,6 +53,7 @@ class Owner extends Component {
                         }
                         
                      </div>
+                     
             </div>
             )
         

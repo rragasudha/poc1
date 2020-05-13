@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DataGet from './DataGet';
 import UpdatedComponent from './bookPlacing';
 import Modal from 'react-modal'
+import CreditCard from './CreditCard';
 
 class Buyer extends Component {
     constructor() {
@@ -37,6 +38,7 @@ class Buyer extends Component {
                                 {(this.state.ifOrder && orderPlaced)&&
                                 (<div>
                                    <input></input>
+                                   <CreditCard></CreditCard>
                                    <button onClick={placeOrder}>Submit</button>
                                 </div>)}
                                 <br></br>
